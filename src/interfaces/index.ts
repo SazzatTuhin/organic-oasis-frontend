@@ -20,3 +20,6 @@ export interface IProduct {
 export interface IProductsResponse extends MessageResponse {
   products: IProduct[];
 }
+export interface IProductResponse extends MessageResponse {
+  product: IProduct;
+}
