@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RaectQueryClientProvider from "@/providers/RaectQueryClientProvider";
 import { Toaster } from "react-hot-toast";
+import ReduxStoreProvider from "@/providers/ReduxStoreProvider";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -24,16 +25,18 @@ export default function RootLayout({
     <RaectQueryClientProvider>
       <html lang="en" data-theme="lemonade">
         <body className={cn(rubik.className, "antialiased")}>
-          <div className="min-h-screen">
-            <Toaster
-              position="bottom-right"
-              reverseOrder={false}
-              toastOptions={{ duration: 5000 }}
-            />
-            <Navbar />
-            {children}
-          </div>
-          <Footer />
+          <ReduxStoreProvider>
+            <div className="min-h-screen">
+              <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+                toastOptions={{ duration: 5000 }}
+              />
+              <Navbar />
+              {children}
+            </div>
+            <Footer />
+          </ReduxStoreProvider>
         </body>
       </html>
     </RaectQueryClientProvider>
