@@ -1,6 +1,11 @@
+"use client";
+
+import useCart from "@/hooks/useCart";
+import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {
+  const { items } = useCart();
   const navItems = (
     <>
       <li>
@@ -59,7 +64,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </nav>
 
-      <nav className="navbar-end">
+      <nav className="navbar-end gap-5">
+        <Link href="/cart" className="relative">
+          <ShoppingCart className="text-accent" />
+          <span className="absoulute -top-2 -right-3 w-4 aspect-square bg-accent-content rounded-full text-accent flex-items-center text-xs font-semibold">
+            {items.length}
+          </span>
+        </Link>
         <Link href="/sign-in" className="btn btn-accent">
           Sign In
         </Link>
