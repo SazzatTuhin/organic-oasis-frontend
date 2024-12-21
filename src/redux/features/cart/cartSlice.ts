@@ -39,6 +39,7 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.items = [];
+      toast.success("The cart has been successfully cleared.");
       state.subtotal = 0;
       state.shippingCost = 0;
       state.tax = 0;
